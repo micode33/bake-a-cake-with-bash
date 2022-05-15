@@ -1,8 +1,4 @@
-source "lib/import_all.sh"
-
 all_lib_queries_tests(){
-
-	import_all "tests/lib/queries"
 
 	test_is_dir_exist_true
 	test_is_dir_exist_not_true
@@ -18,5 +14,3 @@ all_lib_queries_tests(){
 	test_is_verbose_not_true
 
 }
-
-all_lib_queries_tests "$@"

@@ -1,8 +1,4 @@
-source "lib/import_all.sh"
-
 all_lib_cli_colors_tests(){
-
-	import_all "tests/lib/cli/colors"
 
 	test_colors_clear_equals_clear
 	test_colors_white_equals_white
@@ -14,5 +10,3 @@ all_lib_cli_colors_tests(){
 	test_colors_cyan_equals_cyan
 	
 }
-
-all_lib_cli_colors_tests "$@"
