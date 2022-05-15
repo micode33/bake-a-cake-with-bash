@@ -1,0 +1,57 @@
+#!/bin/bash
+
+source lib/import_all.sh
+
+import_all "info"
+
+baker(){
+
+    while [[ $# -gt 0 ]]
+    do
+
+        case "$1" in
+
+            -v|--version)
+                baker_version
+                exit
+            ;;
+
+            -h|--help)
+                baker_help
+                exit
+            ;;
+
+            -l|--list)
+                baker_list
+                exit
+            ;;
+
+            install)
+                shift
+                baker_install "$@"
+                exit
+            ;;
+
+            uninstall)
+                shift
+                baker_uninstall "$@"
+                exit
+            ;;
+
+            test)
+                shift
+                baker_test "$@"
+                exit
+            ;;
+
+            *)
+                baker_help
+                exit
+            ;;
+
+        esac
+    done
+
+}
+
+baker "$@"

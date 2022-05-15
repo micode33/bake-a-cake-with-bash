@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Example.: encrypt [FILEIN] [PASSWORD]
+# Usage...: encrypt secret.txt abc123
+
+source lib/import_all.sh
+
+encrypt(){
+
+    local filein="${1}"
+    local fileout="${1}.enc"
+    local password="${2}"
+    local sha256_before=""
+    local sha256_after=""
+
+    ! is_empty "${password}" || ! is_empty "${GENERAL_PASSWORD}" || {
+        echo -e ${RED}"Please set \$GENERAL_PASSWORD e.g export GENERAL_PASSWORD=\"abc123\""${CLEAR}
+        exit 1
+    }
+
+    ! is_empty "${password}" || {
+        password=${GENERAL_PASSWORD}
+    }
+
+    # Get hash of original data
+    sha256_before=$(cat "${filein}" | sha256sum)
+
+    # Encrypt files
+    openssl enc -aes-256-cbc -salt -a -in "${filein}" -out "${fileout}" -k "${password}"
+
+    # Get hash of encrypted data
+    sha256_after=$(cat "${fileout}" | sha256sum)
+
+    # Store hashes in separate file for integrity checks
+    echo -e "{ \n\t\"sha256_before\": \"${sha256_before}\", \n\t\"sha256_after\": \"${sha256_after}\"\n}" | sed "s/  -//g" > "${filein}.enc.hashes.txt"
+
+    # Cleanup
+    # rm -rf "${filein}"
+
+    echo -e "Successfully encrypted ${filein} to ${CYAN}${fileout}${CLEAR} and ${CYAN}${filein}.enc.hashes.txt${CLEAR}"
+
+}
+
+encrypt $@
