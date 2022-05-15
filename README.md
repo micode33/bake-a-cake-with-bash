@@ -2,6 +2,8 @@
 
 What's you're favourite cake? I like a really good cholocate mud cake so I'm going to write a program in pure bash. I've created a library to make creating a bash program entertaining. *Let's bake a cake!*
 
+![bake a cake](bake-a-cake.gif)
+
 <h2>Table of Contents</h2>
 
 - [Install](#install)
