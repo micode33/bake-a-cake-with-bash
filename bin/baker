@@ -2,7 +2,9 @@
 
 source lib/import_all.sh
 
+import_all "lib"
 import_all "info"
+import_all "src"
 
 baker(){
 
@@ -26,15 +28,9 @@ baker(){
                 exit
             ;;
 
-            install)
+            --cake|cake)
                 shift
-                baker_install "$@"
-                exit
-            ;;
-
-            uninstall)
-                shift
-                baker_uninstall "$@"
+                baker_cake "$@"
                 exit
             ;;
 
@@ -51,6 +47,9 @@ baker(){
 
         esac
     done
+
+    baker_help
+    exit
 
 }
 

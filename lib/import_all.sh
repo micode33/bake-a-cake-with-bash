@@ -1,9 +1,9 @@
 import_all() {
 
-    local directory="$1"
+    local directory="${1:-lib}"
     local bash_files=$(find "${directory}" -name '*.sh' ! -name 'import_all.sh')
     local files_count=$(find "${directory}" -name '*.sh' ! -name 'import_all.sh' | wc -l)
-    local debug=false
+    local debug="${2:-false}"
 
     ! $debug || echo -e "\n\e[96m> Importing ${files_count} files from ${directory}\e[0m\n"
     for file in ${bash_files}
@@ -18,5 +18,3 @@ import_all() {
     ! $debug || echo -e "\n\e[92m\u2713 Successfully imported ${files_count} files from ${directory}\e[0m\n"
 
 }
-
-import_all "lib"

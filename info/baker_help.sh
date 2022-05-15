@@ -1,6 +1,5 @@
 baker_help(){
 
-	echo
 	echo "Baker v1.0.0"
 	echo
 	echo "Usage: baker [OPTIONS] [COMMANDS]"
@@ -16,6 +15,5 @@ baker_help(){
 	echo "Commands:"
 	echo "  cake [NAME]              Use this command to see cake"
 	echo "  test [NAME]              Use this command to test code"
-	echo
 
 }
