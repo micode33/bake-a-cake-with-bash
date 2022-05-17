@@ -1,6 +1,5 @@
-baker_cake_help(){
+baker_list_help(){
 
-  echo "Usage: baker cake [NAME]"
   echo
   echo "List of available cakes"
   echo "- chocolate"

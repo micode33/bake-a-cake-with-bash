@@ -41,7 +41,7 @@ baker_test(){
 		;;
 
 		*)
-			baker_help
+			baker_test_help
 			exit
 		;;
 

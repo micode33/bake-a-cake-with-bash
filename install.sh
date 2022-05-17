@@ -2,7 +2,7 @@
 
 source "lib/import_all.sh"
 
-import_all "lib" 
+import_all "lib"
 import_all "info"
 
 is_root
@@ -13,7 +13,7 @@ is_root
 }
 
 alert_info "Copying to /opt/baker"
-\cp -r "$PWD" "/opt/baker" > /dev/null
+\cp -r "$PWD" "/opt/baker"
 
 is_link "/usr/local/bin/baker" || {
 	alert_info "Linking /usr/local/bin/baker"
